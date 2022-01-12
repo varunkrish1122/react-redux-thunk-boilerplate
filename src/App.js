@@ -1,12 +1,16 @@
-import Typography from 'apollo-react/components/Typography';
+import { Provider } from 'react-redux';
 
+import Test from './Components/Test'
+import store from './Store';
 import './App.css';
 
 function App() {
   return (
-    <div >
-      I am boilerplate with React and Redux
-    </div>
+    <Provider store={store}>
+      <div >
+        <Test />
+      </div>
+    </Provider>
   );
 }
 

@@ -307,6 +307,7 @@ module.exports = function (webpackEnv) {
       extensions: paths.moduleFileExtensions
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
+      mainFiles: ['index'],
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -317,6 +318,8 @@ module.exports = function (webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
+        '^': path.resolve(__dirname, './'),
+        '@': path.resolve(__dirname, '../src'),
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).
